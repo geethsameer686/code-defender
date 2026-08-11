@@ -132,13 +132,10 @@ DEFENDER_MODEL_NAME=gemini-2.0-flash
 - **adk** — **genuine Google ADK**: real `LlmAgent`s under a `ParallelAgent` +
   `Runner`. Model calls route through a custom `BaseLlm` (`GatewayLlm`) to your
   BYOM backend. `pip install ".[gemini]"`; requires `google-adk`.
-- **gateway** — direct Gemini via the Walmart PROD LLM Gateway (no ADK).
 - **gemini** — Google ADK's raw `LlmAgent` against public Gemini/Vertex. Set `GOOGLE_API_KEY`.
 - **openai** — any OpenAI-compatible endpoint. Set `OPENAI_API_KEY` / `OPENAI_BASE_URL`.
   **This one has automatic precedence**: if `OPENAI_API_KEY` (or the `OPENAIKEY`
-  shorthand) is set *at all*, Defender uses it regardless of
-  `DEFENDER_MODEL_PROVIDER` — the Walmart Gateway/ADK/Gemini path is switched
-  off automatically. See [GETTING_STARTED.md](GETTING_STARTED.md) for details.
+  shorthand) is set *at all*. See [GETTING_STARTED.md](GETTING_STARTED.md) for details.
 - **ollama** — on-prem / air-gapped. Set `OLLAMA_BASE_URL` / `OLLAMA_MODEL`.
 
 If a real provider's dependency or key is missing, Defender **degrades to the
