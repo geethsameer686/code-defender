@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Defender — AI Code Compliance Defender{% endblock %}</title>
+<meta name="description" content="Defender is an AI-powered, multi-agent code compliance platform built on Google ADK for regulated banking systems. Runs on every PR across GitHub &amp; GitLab.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5l8-3z' fill='%236366f1'/%3E%3Cpath d='M9.5 12l1.8 1.8L15 10' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'], mono: ['JetBrains Mono','ui-monospace'] },
+        colors: {
+          ink: { 950: '#05060a', 900: '#0a0e17', 800: '#0f1420', 700: '#161c2c', 600: '#1f2740' },
+          brand: { 400:'#818cf8', 500:'#6366f1', 600:'#4f46e5', 700:'#4338ca' },
+        },
+        boxShadow: { glow: '0 0 60px -10px rgba(99,102,241,0.45)' },
+      }
+    }
+  }
+</script>
+<style>
+  body { background:#05060a; color:#e5e7eb; font-family:'Inter',ui-sans-serif,system-ui; }
+  .grad-text{ background:linear-gradient(90deg,#818cf8,#22d3ee 45%,#34d399 90%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .glass{ background:rgba(255,255,255,0.035); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(14px); }
+  .glow-border{ position:relative; }
+  .glow-border::before{ content:''; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
+    background:linear-gradient(135deg,rgba(99,102,241,.6),rgba(34,211,238,.25),transparent 60%)   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+  .blob{ position:absolute; border-radius:9999px; filter:blur(90px); opacity:.35; animation:float 14s ease-in-out infinite; }
+  @keyframes float{ 0%,100%{ transform:translate(0,0) } 50%{ transform:translate(24px,-28px) } }
+  .mono{ font-family:'JetBrains Mono',ui-monospace,monospace; }
+  ::selection{ background:#4f46e5; color:white; }
+  .htmx-indicator{ display:none } .htmx-request .htmx-indicator{ display:flex }
+  .fade-up{ animation:fadeUp .5s ease both; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
+</style>
+{% block extra_head %}{% endblock %}
+</head>
+<body class="antialiased">
+{% include "partials/nav.html" %}
+<main>
+{% block content %}{% endblock %}
+</main>
+{% include "partials/footer.html" %}
+</body>
+</html>

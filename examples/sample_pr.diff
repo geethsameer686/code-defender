@@ -1,0 +1,18 @@
+diff --git a/service/transfer.py b/service/transfer.py
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/service/transfer.py
+@@ -0,0 +1,14 @@
++import requests
++
++ADMIN_TOKEN = "token_live_9f8e7d6c5b4a3210deadbeef"
++
++
++def transfer(from_acct, to_acct, amount, ssn):
++    # logs PII and cardholder data
++    logger.info(f"transfer ssn={ssn} card_number={from_acct}")
++    query = "SELECT * FROM accounts WHERE id = '%s'" % from_acct
++    db.execute(query)
++    resp = requests.get("http://bank.internal/move", verify=False)
++    return resp

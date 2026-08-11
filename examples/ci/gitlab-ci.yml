@@ -1,0 +1,19 @@
+# Defender merge-request compliance gate for GitLab CI.
+defender_compliance:
+  stage: test
+  image: python:3.13-slim
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  before_script:
+    - pip install uv && uv pip install --system -e .
+  script:
+    - git fetch origin "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
+    - >
+      git diff "origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"...HEAD
+      | defender review --stdin --format sarif -o defender.sarif
+  artifacts:
+    when: always
+    paths:
+      - defender.sarif
+    reports:
+      sast: defender.sarif

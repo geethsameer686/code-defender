@@ -1,0 +1,68 @@
+<section id="architecture" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="max-w-2xl mb-14">
+    <span class="text-brand-400 font-semibold text-sm uppercase tracking-wide">Under the hood</span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-4">Real Google ADK orchestration.</h2>
+    <p class="text-slate-400 text-lg">Not "ADK-style" — Defender runs genuine
+      <code class="mono text-brand-300">LlmAgent</code> instances under an ADK
+      <code class="mono text-brand-300">ParallelAgent</code>, executed by an ADK
+      <code class="mono text-brand-300">Runner</code>. A custom
+      <code class="mono text-brand-300">BaseLlm</code> adapter routes every model
+      call to your BYOM backend.</p>
+  </div>
+
+  <div class="glass rounded-2xl p-8 overflow-x-auto">
+    <div class="flex items-center gap-4 min-w-[880px]">
+      <div class="glass rounded-xl px-5 py-4 text-center w-40 shrink-0">
+        <div class="text-xs text-slate-400 mb-1">PR / MR / CLI</div>
+        <div class="font-bold">Diff / Repo</div>
+      </div>
+      <svg class="shrink-0 text-slate-600" width="36" height="20"><path d="M0 10h30m0 0l-8-6m8 6l-8 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+      <div class="glass rounded-xl px-5 py-4 text-center w-44 shrink-0 border border-brand-500/30">
+        <div class="text-xs text-brand-300 mb-1">ADK Runner</div>
+        <div class="font-bold">ParallelAgent</div>
+      </div>
+      <svg class="shrink-0 text-slate-600" width="36" height="20"><path d="M0 10h30m0 0l-8-6m8 6l-8 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+      <div class="grid grid-rows-3 grid-flow-col gap-2 shrink-0">
+        {% for d in ["Security","Compliance","Quality","Performance","Architecture","Vulnerability"] %}
+        <div class="glass rounded-lg px-3 py-2 text-xs font-semibold text-center w-32">
+          <span class="text-brand-300">LlmAgent</span><br>{{ d }}
+        </div>
+        {% endfor %}
+      </div>
+      <svg class="shrink-0 text-slate-600" width="36" height="20"><path d="M0 10h30m0 0l-8-6m8 6l-8 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+      <div class="glass rounded-xl px-5 py-4 text-center w-44 shrink-0 border border-cyan-500/30">
+        <div class="text-xs text-cyan-300 mb-1">Custom BaseLlm</div>
+        <div class="font-bold">GatewayLlm</div>
+      </div>
+      <svg class="shrink-0 text-slate-600" width="36" height="20"><path d="M0 10h30m0 0l-8-6m8 6l-8 6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+
+      <div class="glass rounded-xl px-5 py-4 text-center w-56 shrink-0 border border-emerald-500/30">
+        <div class="text-xs text-emerald-300 mb-1">BYOM backend</div>
+        <div class="font-bold text-sm leading-snug">Gemini &middot; OpenAI &middot; on-prem</div>
+        <div class="text-[11px] text-slate-500 mt-1">currently: <span class="mono text-emerald-300">{{ live_provider|default('mock') }}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-4 gap-6 mt-8">
+    <div class="glass rounded-xl p-5">
+      <h4 class="font-semibold mb-1 text-brand-300">Static rules always run</h4>
+      <p class="text-sm text-slate-400">Deterministic, reproducible, audit-defensible checks cover every file, every time — regardless of model availability.</p>
+    </div>
+    <div class="glass rounded-xl p-5">
+      <h4 class="font-semibold mb-1 text-cyan-300">ADK adds contextual judgement</h4>
+      <p class="text-sm text-slate-400">Six real ADK LlmAgents reason about logic flaws and architectural erosion that regex can't see.</p>
+    </div>
+    <div class="glass rounded-xl p-5">
+      <h4 class="font-semibold mb-1 text-emerald-300">Graceful degradation</h4>
+      <p class="text-sm text-slate-400">No key or network? Falls back to a deterministic offline mock — never a crash, never a silent skip.</p>
+    </div>
+    <div class="glass rounded-xl p-5">
+      <h4 class="font-semibold mb-1 text-amber-300">Bring your own OpenAI key</h4>
+      <p class="text-sm text-slate-400">Export <code class="mono text-slate-300">OPENAI_API_KEY</code> and it automatically takes over from the Gateway/ADK path — no other config change needed.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,148 @@
+<section id="demo" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="max-w-2xl mb-10">
+    <span class="text-brand-400 font-semibold text-sm uppercase tracking-wide">Try it yourself</span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-4">Paste code, or point at a repo.</h2>
+    <p class="text-slate-400 text-lg">Runs the real Defender engine right now &mdash;
+      static rules plus your configured model backend, with a live
+      stage-by-stage progress feed (connect &rarr; clone &rarr; scan &rarr;
+      dispatch to agents &rarr; score). No signup.</p>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-6">
+    <form hx-post="/analyze/start" hx-target="#demo-result" hx-indicator="#demo-spin" hx-swap="innerHTML"
+          class="glass rounded-2xl p-6">
+
+      <div class="flex gap-2 mb-4 bg-white/5 rounded-lg p-1 w-fit text-sm">
+        <button type="button" id="tab-snippet" onclick="setDemoTab('snippet')"
+          class="px-3 py-1.5 rounded-md font-semibold bg-brand-600 transition">Snippet / diff</button>
+        <button type="button" id="tab-repo" onclick="setDemoTab('repo')"
+          class="px-3 py-1.5 rounded-md font-semibold text-slate-400 hover:text-white transition">Public repo URL</button>
+      </div>
+
+      <div id="block-snippet">
+        <div class="flex items-center justify-between mb-3">
+          <label for="payload_snippet" class="text-sm font-semibold text-slate-300">Diff or code snippet</label>
+          <div class="flex gap-2 text-xs">
+            <button type="button" onclick="loadExample('vuln')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 transition">Load vulnerable example</button>
+            <button type="button" onclick="loadExample('clean')" class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 transition">Load clean example</button>
+          </div>
+        </div>
+        <textarea id="payload_snippet" name="payload" rows="14" required
+          class="w-full bg-ink-950 border border-white/10 rounded-xl p-4 mono text-[13px] leading-relaxed
+                 focus:ring-2 focus:ring-brand-500 focus:outline-none placeholder:text-slate-600"
+          placeholder="def transfer(acct, ssn):&#10;    logger.info(f&quot;ssn={ssn}&quot;)&#10;    db.execute(&quot;SELECT * FROM a WHERE id=%s&quot; % acct)"></textarea>
+      </div>
+
+      <div id="block-repo" class="hidden">
+        <label for="payload_repo" class="text-sm font-semibold text-slate-300 block mb-3">Public GitHub / GitLab repo URL</label>
+        <input id="payload_repo" name="payload" type="url" disabled
+          class="w-full bg-ink-950 border border-white/10 rounded-xl p-4 mono text-[13px]
+                 focus:ring-2 focus:ring-brand-500 focus:outline-none placeholder:text-slate-600"
+          placeholder="https://github.com/pallets/flask.git">
+        <div class="flex gap-2 text-xs mt-3">
+          <button type="button" onclick="loadRepoExample('https://github.com/pallets/flask.git')"
+            class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 transition">flask</button>
+          <button type="button" onclick="loadRepoExample('https://github.com/pallets/itsdangerous.git')"
+            class="px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 transition">itsdangerous (fast)</button>
+        </div>
+        <p class="text-xs text-slate-500 mt-3">Shallow-clones to a temp dir, runs a full-repo audit, then deletes
+          the checkout. Public https:// URLs only &mdash; no internal hosts, 30s clone timeout.</p>
+      </div>
+
+      <div class="flex items-center justify-between mt-4">
+        <label class="flex items-center gap-2 text-sm text-slate-300">
+          <!-- Hidden 'off' fallback BEFORE the checkbox: unchecked checkboxes are
+               never submitted by browsers, so without this, an unchecked box
+               would silently fall back to the Form("on") default and the LLM
+               would run anyway. When checked, the checkbox value (sent after
+               this one) wins — last value wins for duplicate form keys. -->
+          <input type="hidden" name="use_llm" value="off">
+          <input type="checkbox" name="use_llm" value="on" checked
+                 class="rounded bg-ink-950 border-white/20 text-brand-500 focus:ring-brand-500">
+          Use AI agents (ADK / BYOM)
+        </label>
+        <input type="hidden" id="mode_field" name="mode" value="code">
+        <button type="submit"
+          class="bg-brand-600 hover:bg-brand-500 transition px-6 py-3 rounded-xl font-semibold shadow-glow flex items-center gap-2">
+          <span>Run Defender</span>
+          <svg class="htmx-indicator animate-spin" id="demo-spin" width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="white" stroke-opacity=".25" stroke-width="3"></circle>
+            <path d="M21 12a9 9 0 00-9-9" stroke="white" stroke-width="3" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <div id="demo-result" class="glass rounded-2xl p-6 flex items-center justify-center text-center min-h-[420px]">
+      <div class="text-slate-500 max-w-xs">
+        <svg class="mx-auto mb-4 opacity-40" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5l8-3z"></path>
+        </svg>
+        Your compliance verdict will appear here.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+var DEFENDER_EXAMPLES = {
+  vuln: [
+    'def transfer(acct, ssn, card_number):',
+    '    api_key = "sk_live_abcdef1234567890secret"',
+    '    logger.info("transfer ssn=" + ssn + " card_number=" + card_number)',
+    '    query = "SELECT * FROM accounts WHERE id = %s" % acct',
+    '    db.execute(query)',
+    '    resp = requests.get("http://bank.internal/move", verify=False)',
+    '    return eval(resp.text)'
+  ].join(String.fromCharCode(10)),
+  clean: [
+    'def transfer(account_id, amount):',
+    '    """Move funds between accounts using parameterized queries."""',
+    '    if amount <= 0:',
+    '        raise ValueError("amount must be positive")',
+    '    query = "UPDATE accounts SET balance = balance - %s WHERE id = %s"',
+    '    db.execute(query, (amount, account_id))',
+    '    logger.info("transfer completed for account %s", account_id)',
+    '    return TransferResult(status="ok")'
+  ].join(String.fromCharCode(10))
+};
+function loadExample(kind) {
+  document.getElementById('payload_snippet').value = DEFENDER_EXAMPLES[kind];
+}
+function loadRepoExample(url) {
+  document.getElementById('payload_repo').value = url;
+}
+function setDemoTab(tab) {
+  var snippetBlock = document.getElementById('block-snippet');
+  var repoBlock = document.getElementById('block-repo');
+  var snippetInput = document.getElementById('payload_snippet');
+  var repoInput = document.getElementById('payload_repo');
+  var tabSnippet = document.getElementById('tab-snippet');
+  var tabRepo = document.getElementById('tab-repo');
+  var modeField = document.getElementById('mode_field');
+  var active = 'bg-brand-600 transition';
+  var inactive = 'text-slate-400 hover:text-white transition';
+
+  if (tab === 'repo') {
+    snippetBlock.classList.add('hidden');
+    repoBlock.classList.remove('hidden');
+    snippetInput.disabled = true;
+    snippetInput.required = false;
+    repoInput.disabled = false;
+    repoInput.required = true;
+    modeField.value = 'repo';
+    tabRepo.className = 'px-3 py-1.5 rounded-md font-semibold ' + active;
+    tabSnippet.className = 'px-3 py-1.5 rounded-md font-semibold ' + inactive;
+  } else {
+    repoBlock.classList.add('hidden');
+    snippetBlock.classList.remove('hidden');
+    repoInput.disabled = true;
+    repoInput.required = false;
+    snippetInput.disabled = false;
+    snippetInput.required = true;
+    modeField.value = 'code';
+    tabSnippet.className = 'px-3 py-1.5 rounded-md font-semibold ' + active;
+    tabRepo.className = 'px-3 py-1.5 rounded-md font-semibold ' + inactive;
+  }
+}
+</script>

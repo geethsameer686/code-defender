@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Defender Report — 71491c9ec2e6</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+<div class="max-w-5xl mx-auto p-6">
+  <header class="flex items-center justify-between mb-6">
+    <div>
+      <h1 class="text-2xl font-bold">Defender Compliance Report</h1>
+      <p class="text-slate-500 text-sm">Change <code>71491c9ec2e6</code>
+        · backend <code>mock</code>
+        (gemini-2.0-flash)</p>
+    </div>
+    <span class="px-4 py-2 rounded-lg border text-lg font-bold bg-red-100 text-red-800 border-red-300">
+      FAIL</span>
+  </header>
+
+  <section class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+    <div class="bg-white rounded-lg shadow-sm p-4 text-center">
+      <div class="text-2xl font-bold">47.7/100</div>
+      <div class="text-xs text-slate-500 uppercase tracking-wide">Score</div>
+    </div>
+    <div class="bg-red-50 rounded-lg shadow-sm p-4 text-center">
+      <div class="text-2xl font-bold">5</div>
+      <div class="text-xs text-slate-500 uppercase tracking-wide">Critical</div>
+    </div>
+    <div class="bg-orange-50 rounded-lg shadow-sm p-4 text-center">
+      <div class="text-2xl font-bold">14</div>
+      <div class="text-xs text-slate-500 uppercase tracking-wide">High</div>
+    </div>
+    <div class="bg-amber-50 rounded-lg shadow-sm p-4 text-center">
+      <div class="text-2xl font-bold">8</div>
+      <div class="text-xs text-slate-500 uppercase tracking-wide">Medium</div>
+    </div>
+    <div class="bg-sky-50 rounded-lg shadow-sm p-4 text-center">
+      <div class="text-2xl font-bold">1</div>
+      <div class="text-xs text-slate-500 uppercase tracking-wide">Low</div>
+    </div>
+  </section>
+
+  <section class="bg-white rounded-lg shadow-sm p-4 mb-6">
+    <h2 class="font-semibold mb-2">Executive summary</h2>
+    <p class="text-slate-600 text-sm leading-relaxed">
+      Defender validated 1 file(s) across 6 quality layers using the &#x27;mock&#x27; model backend. Overall compliance score: 47.7/100 — verdict: FAIL. Findings — critical: 5, high: 14, medium: 8, low: 1. Highest severity: critical. Blocked: 19 finding(s) at/above &#x27;high&#x27; severity (policy blocks &gt;= high).</p>
+    <p class="mt-3 text-sm font-medium">Gate decision: Blocked: 19 finding(s) at/above &#x27;high&#x27; severity (policy blocks &gt;= high).</p>
+  </section>
+
+  <section class="bg-white rounded-lg shadow-sm p-4 mb-6">
+    <h2 class="font-semibold mb-3">Quality layers</h2>
+    <table class="w-full text-left">
+      <thead><tr class="text-slate-400 text-sm border-b">
+        <th class="py-2 px-3">Layer</th><th class="py-2 px-3">Score</th>
+        <th class="py-2 px-3 text-center">Findings</th>
+        <th class="py-2 px-3">Summary</th></tr></thead>
+      <tbody><tr class="border-b border-slate-100">
+          <td class="py-2 px-3 font-medium">Security</td>
+          <td class="py-2 px-3"><div class="flex items-center gap-2">
+      <div class="w-24 bg-slate-100 rounded-full h-2">
+        <div class="bg-red-500 h-2 rounded-full" style="width:0.0%"></div></div>
+      <span class="text-sm">0.0</span></div></td>
+          <td class="py-2 px-3 text-center">11</td>
+          <td class="py-2 px-3 text-slate-500 text-sm">11 security finding(s), 9 high/critical.</td>
+        </tr><tr class="border-b border-slate-100">
+          <td class="py-2 px-3 font-medium">Compliance</td>
+          <td class="py-2 px-3"><div class="flex items-center gap-2">
+      <div class="w-24 bg-slate-100 rounded-full h-2">
+        <div class="bg-red-500 h-2 rounded-full" style="width:0.0%"></div></div>
+      <span class="text-sm">0.0</span></div></td>
+          <td class="py-2 px-3 text-center">10</td>
+          <td class="py-2 px-3 text-slate-500 text-sm">10 compliance finding(s), 10 high/critical.</td>
+        </tr><tr class="border-b border-slate-100">
+          <td class="py-2 px-3 font-medium">Quality</td>
+          <td class="py-2 px-3"><div class="flex items-center gap-2">
+      <div class="w-24 bg-slate-100 rounded-full h-2">
+        <div class="bg-green-500 h-2 rounded-full" style="width:97.0%"></div></div>
+      <span class="text-sm">97.0</span></div></td>
+          <td class="py-2 px-3 text-center">1</td>
+          <td class="py-2 px-3 text-slate-500 text-sm">1 quality finding(s), 0 high/critical.</td>
+        </tr><tr class="border-b border-slate-100">
+          <td class="py-2 px-3 font-medium">Performance</td>
+          <td class="py-2 px-3"><div class="flex items-center gap-2">
+      <div class="w-24 bg-slate-100 rounded-full h-2">
+        <div class="bg-amber-500 h-2 rounded-full" style="width:76.0%"></div></div>
+      <span class="text-sm">76.0</span></div></td>
+          <td class="py-2 px-3 text-center">3</td>
+          <td class="py-2 px-3 text-slate-500 text-sm">3 performance finding(s), 0 high/critical.</td>
+        </tr><tr class="border-b border-slate-100">
+          <td class="py-2 px-3 font-medium">Architecture</td>
+          <td class="py-2 px-3"><div class="flex items-center gap-2">
+      <div class="w-24 bg-slate-100 rounded-full h-2">
+        <div class="bg-green-500 h-2 rounded-full" style="width:100.0%"></div></div>
+      <span class="text-sm">100.0</span></div></td>
+          <td class="py-2 px-3 text-center">0</td>
+          <td class="py-2 px-3 text-slate-500 text-sm">No architecture issues detected.</td>
+        </tr><tr class="border-b border-slate-100">
+          <td class="py-2 px-3 font-medium">Vulnerability</td>
+          <td class="py-2 px-3"><div class="flex items-center gap-2">
+      <div class="w-24 bg-slate-100 rounded-full h-2">
+        <div class="bg-amber-500 h-2 rounded-full" style="width:76.0%"></div></div>
+      <span class="text-sm">76.0</span></div></td>
+          <td class="py-2 px-3 text-center">3</td>
+          <td class="py-2 px-3 text-slate-500 text-sm">3 vulnerability finding(s), 0 high/critical.</td>
+        </tr></tbody>
+    </table>
+  </section>
+
+  <section class="bg-white rounded-lg shadow-sm p-4 mb-6">
+    <h2 class="font-semibold mb-3">Findings (28)</h2>
+    <div class="space-y-3"><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-600 text-white">
+          CRITICAL</span>
+        <span class="font-medium">Hardcoded secret / credential</span>
+        <code class="text-xs text-slate-400">SEC-HARDCODED-SECRET</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:14 · static</p>
+      <p class="text-sm text-slate-700 mt-1">A secret, API key, or password appears to be hardcoded in source.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Load secrets from a vault or environment, never source control.</p><span class="text-xs text-slate-400">OWASP A07, CWE-798, PCI-DSS 8.2.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-600 text-white">
+          CRITICAL</span>
+        <span class="font-medium">Hardcoded secret / credential</span>
+        <code class="text-xs text-slate-400">SEC-HARDCODED-SECRET</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:15 · static</p>
+      <p class="text-sm text-slate-700 mt-1">A secret, API key, or password appears to be hardcoded in source.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Load secrets from a vault or environment, never source control.</p><span class="text-xs text-slate-400">OWASP A07, CWE-798, PCI-DSS 8.2.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-600 text-white">
+          CRITICAL</span>
+        <span class="font-medium">CVV / sensitive authentication data handling</span>
+        <code class="text-xs text-slate-400">PCI-CVV-HANDLING</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:20 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Code references CVV/CVC/track data, which must never be stored.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Sensitive auth data must never be persisted (PCI-DSS 3.2).</p><span class="text-xs text-slate-400">PCI-DSS 3.2.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-600 text-white">
+          CRITICAL</span>
+        <span class="font-medium">CVV / sensitive authentication data handling</span>
+        <code class="text-xs text-slate-400">PCI-CVV-HANDLING</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:21 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Code references CVV/CVC/track data, which must never be stored.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Sensitive auth data must never be persisted (PCI-DSS 3.2).</p><span class="text-xs text-slate-400">PCI-DSS 3.2.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-600 text-white">
+          CRITICAL</span>
+        <span class="font-medium">CVV / sensitive authentication data handling</span>
+        <code class="text-xs text-slate-400">PCI-CVV-HANDLING</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:23 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Code references CVV/CVC/track data, which must never be stored.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Sensitive auth data must never be persisted (PCI-DSS 3.2).</p><span class="text-xs text-slate-400">PCI-DSS 3.2.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">TLS certificate verification disabled</span>
+        <code class="text-xs text-slate-400">SEC-TLS-DISABLED</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:37 · static</p>
+      <p class="text-sm text-slate-700 mt-1">verify=False / rejectUnauthorized:false disables TLS validation.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Never disable certificate verification for banking traffic.</p><span class="text-xs text-slate-400">OWASP A02, CWE-295, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Insecure deserialization</span>
+        <code class="text-xs text-slate-400">SEC-INSECURE-DESERIALIZE</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:44 · static</p>
+      <p class="text-sm text-slate-700 mt-1">pickle/yaml.load on untrusted data can execute code.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Use yaml.safe_load / JSON; never unpickle untrusted input.</p><span class="text-xs text-slate-400">OWASP A08, CWE-502</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Dynamic code execution</span>
+        <code class="text-xs text-slate-400">SEC-EVAL-EXEC</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:49 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Use of eval()/exec() enables arbitrary code execution.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Avoid eval/exec; use explicit parsing or safe dispatch tables.</p><span class="text-xs text-slate-400">OWASP A03, CWE-95</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Possible SQL injection via string building</span>
+        <code class="text-xs text-slate-400">SEC-SQL-INJECTION</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:56 · static</p>
+      <p class="text-sm text-slate-700 mt-1">SQL appears to be built with string concatenation/formatting.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Use parameterized queries / prepared statements.</p><span class="text-xs text-slate-400">OWASP A03, CWE-89, PCI-DSS 6.5.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Dynamic code execution via eval()</span>
+        <code class="text-xs text-slate-400">AI-SECURITY-76A54B</code>
+      </div>
+      <p class="text-sm text-slate-500">&lt;change set&gt; · agent</p>
+      <p class="text-sm text-slate-700 mt-1">The security analyzer (offline mock) flagged a pattern resembling &#x27;eval(&#x27;. Review whether this is appropriate for a regulated banking workload.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Refactor to the secure/compliant equivalent.</p>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Insecure deserialization with pickle</span>
+        <code class="text-xs text-slate-400">AI-SECURITY-CC2B10</code>
+      </div>
+      <p class="text-sm text-slate-500">&lt;change set&gt; · agent</p>
+      <p class="text-sm text-slate-700 mt-1">The security analyzer (offline mock) flagged a pattern resembling &#x27;pickle.load&#x27;. Review whether this is appropriate for a regulated banking workload.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Refactor to the secure/compliant equivalent.</p>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">TLS verification disabled</span>
+        <code class="text-xs text-slate-400">AI-SECURITY-BA3098</code>
+      </div>
+      <p class="text-sm text-slate-500">&lt;change set&gt; · agent</p>
+      <p class="text-sm text-slate-700 mt-1">The security analyzer (offline mock) flagged a pattern resembling &#x27;verify=false&#x27;. Review whether this is appropriate for a regulated banking workload.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Refactor to the secure/compliant equivalent.</p>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Cardholder data variable in scope</span>
+        <code class="text-xs text-slate-400">PCI-PAN-VARIABLE</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:20 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Variable names suggest cardholder data flows through this code.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Ensure PAN is encrypted at rest/in transit and access-logged.</p><span class="text-xs text-slate-400">PCI-DSS 3.4, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Cardholder data variable in scope</span>
+        <code class="text-xs text-slate-400">PCI-PAN-VARIABLE</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:21 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Variable names suggest cardholder data flows through this code.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Ensure PAN is encrypted at rest/in transit and access-logged.</p><span class="text-xs text-slate-400">PCI-DSS 3.4, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Cardholder data variable in scope</span>
+        <code class="text-xs text-slate-400">PCI-PAN-VARIABLE</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:23 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Variable names suggest cardholder data flows through this code.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Ensure PAN is encrypted at rest/in transit and access-logged.</p><span class="text-xs text-slate-400">PCI-DSS 3.4, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Cardholder data variable in scope</span>
+        <code class="text-xs text-slate-400">PCI-PAN-VARIABLE</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:29 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Variable names suggest cardholder data flows through this code.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Ensure PAN is encrypted at rest/in transit and access-logged.</p><span class="text-xs text-slate-400">PCI-DSS 3.4, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Cardholder data variable in scope</span>
+        <code class="text-xs text-slate-400">PCI-PAN-VARIABLE</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:32 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Variable names suggest cardholder data flows through this code.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Ensure PAN is encrypted at rest/in transit and access-logged.</p><span class="text-xs text-slate-400">PCI-DSS 3.4, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Cardholder data variable in scope</span>
+        <code class="text-xs text-slate-400">PCI-PAN-VARIABLE</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:37 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Variable names suggest cardholder data flows through this code.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Ensure PAN is encrypted at rest/in transit and access-logged.</p><span class="text-xs text-slate-400">PCI-DSS 3.4, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-red-500 text-white">
+          HIGH</span>
+        <span class="font-medium">Possible PAN handling — PCI-DSS scope</span>
+        <code class="text-xs text-slate-400">AI-COMPLIANCE-59E0EC</code>
+      </div>
+      <p class="text-sm text-slate-500">&lt;change set&gt; · agent</p>
+      <p class="text-sm text-slate-700 mt-1">The compliance analyzer (offline mock) flagged a pattern resembling &#x27;card_number&#x27;. Review whether this is appropriate for a regulated banking workload.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Refactor to the secure/compliant equivalent.</p>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">Debug mode enabled</span>
+        <code class="text-xs text-slate-400">SEC-DEBUG-ENABLED</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:17 · static</p>
+      <p class="text-sm text-slate-700 mt-1">Debug flags leak stack traces and internals in production.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Disable debug in any non-local environment.</p><span class="text-xs text-slate-400">OWASP A05, CWE-489</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">Weak cryptographic hash</span>
+        <code class="text-xs text-slate-400">SEC-WEAK-HASH</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:29 · static</p>
+      <p class="text-sm text-slate-700 mt-1">MD5/SHA1 are broken for security-sensitive use.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Use SHA-256+ or bcrypt/argon2 for passwords.</p><span class="text-xs text-slate-400">OWASP A02, CWE-327, PCI-DSS 6.5.3</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">SELECT * query</span>
+        <code class="text-xs text-slate-400">PERF-SELECT-STAR</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:32 · static</p>
+      <p class="text-sm text-slate-700 mt-1">SELECT * fetches unnecessary columns and defeats indexing.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Select only the columns you need.</p>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">SELECT * query</span>
+        <code class="text-xs text-slate-400">PERF-SELECT-STAR</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:56 · static</p>
+      <p class="text-sm text-slate-700 mt-1">SELECT * fetches unnecessary columns and defeats indexing.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Select only the columns you need.</p>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">SELECT * pulls unneeded columns</span>
+        <code class="text-xs text-slate-400">AI-PERFORMANCE-65263C</code>
+      </div>
+      <p class="text-sm text-slate-500">&lt;change set&gt; · agent</p>
+      <p class="text-sm text-slate-700 mt-1">The performance analyzer (offline mock) flagged a pattern resembling &#x27;select *&#x27;. Review whether this is appropriate for a regulated banking workload.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Refactor to the secure/compliant equivalent.</p>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">Insecure randomness for security value</span>
+        <code class="text-xs text-slate-400">VULN-INSECURE-RANDOM</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:26 · static</p>
+      <p class="text-sm text-slate-700 mt-1">random module is not cryptographically secure.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Use secrets/os.urandom for tokens, keys, and nonces.</p><span class="text-xs text-slate-400">CWE-330</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">Outbound HTTP call without timeout</span>
+        <code class="text-xs text-slate-400">VULN-REQUESTS-NO-TIMEOUT</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:36 · static</p>
+      <p class="text-sm text-slate-700 mt-1">requests call without a timeout can hang worker threads (DoS).</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Always set a timeout on outbound calls.</p><span class="text-xs text-slate-400">CWE-400</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-500 text-white">
+          MEDIUM</span>
+        <span class="font-medium">Cleartext HTTP endpoint</span>
+        <code class="text-xs text-slate-400">VULN-HTTP-URL</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:37 · static</p>
+      <p class="text-sm text-slate-700 mt-1">An http:// URL transmits data without encryption.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Use https:// for all external communication.</p><span class="text-xs text-slate-400">CWE-319, PCI-DSS 4.1</span>
+    </div><div class="border border-slate-200 rounded-lg p-3">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-500 text-white">
+          LOW</span>
+        <span class="font-medium">Leftover debug print</span>
+        <code class="text-xs text-slate-400">QUAL-PRINT-DEBUG</code>
+      </div>
+      <p class="text-sm text-slate-500">examples/vulnerable_payment.py:23 · static</p>
+      <p class="text-sm text-slate-700 mt-1">A raw print/console.log looks like leftover debugging.</p>
+      <p class="text-sm text-emerald-700 mt-1">Fix: Use a structured logger with appropriate levels.</p>
+    </div></div>
+  </section>
+
+  <section class="bg-white rounded-lg shadow-sm p-4">
+    <h2 class="font-semibold mb-2">Files analyzed</h2>
+    <ul class="list-disc list-inside"><li class="text-sm text-slate-600">examples/vulnerable_payment.py</li></ul>
+  </section>
+
+  <footer class="text-center text-xs text-slate-400 mt-8">
+    Generated by Defender — AI Code Compliance Defender for banking.
+  </footer>
+</div>
+</body>
+</html>

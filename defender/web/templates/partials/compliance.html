@@ -1,0 +1,38 @@
+<section id="compliance" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="max-w-2xl mb-14">
+    <span class="text-brand-400 font-semibold text-sm uppercase tracking-wide">Enterprise governance</span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-4">Built for regulated banking.</h2>
+    <p class="text-slate-400 text-lg">Every finding cites the framework clause it violates &mdash;
+      audit-defensible, not vibes.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {% set frameworks = [
+      ("PCI-DSS", "Cardholder data (PAN/CVV), tokenization, encrypted transport.", "border-red-500/20", "text-red-400"),
+      ("SOC 2", "Access control integrity, authorization bypass detection.", "border-violet-500/20", "text-violet-400"),
+      ("GDPR", "PII minimization, redaction in logs, data-subject protection.", "border-cyan-500/20", "text-cyan-400"),
+      ("HIPAA", "PHI field detection, encryption &amp; audit-trail requirements.", "border-emerald-500/20", "text-emerald-400"),
+    ] %}
+    {% for name, desc, border, color in frameworks %}
+    <div class="glass rounded-2xl p-6 {{ border }}">
+      <div class="text-xl font-extrabold mb-2 {{ color }}">{{ name }}</div>
+      <p class="text-sm text-slate-400">{{ desc|safe }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="glass rounded-2xl p-6 mt-6 flex flex-wrap items-center justify-between gap-4">
+    <div>
+      <h4 class="font-semibold mb-1">Bring Your Own Model (BYOM)</h4>
+      <p class="text-sm text-slate-400 max-w-xl">On-premise, air-gapped deployment for the most sensitive
+        workloads. Point Defender at Gemini, an OpenAI-compatible endpoint, or a fully local Ollama model &mdash;
+        no data ever has to leave your network.</p>
+    </div>
+    <div class="flex gap-2 text-xs font-semibold">
+      <span class="bg-white/5 rounded-full px-3 py-1.5">Gemini / Google ADK</span>
+      <span class="bg-white/5 rounded-full px-3 py-1.5">OpenAI-compatible</span>
+      <span class="bg-white/5 rounded-full px-3 py-1.5">On-prem Ollama</span>
+      <span class="bg-white/5 rounded-full px-3 py-1.5">Offline mock</span>
+    </div>
+  </div>
+</section>

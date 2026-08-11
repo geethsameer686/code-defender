@@ -1,0 +1,39 @@
+<section id="integrations" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="max-w-2xl mb-14">
+    <span class="text-brand-400 font-semibold text-sm uppercase tracking-wide">Fits your workflow</span>
+    <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 mb-4">Runs everywhere your team already works.</h2>
+    <p class="text-slate-400 text-lg">CLI, webhook, or API &mdash; drop Defender into any pipeline without
+      changing how your team ships.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    {% set rows = [
+      ("Version control", "GitHub &amp; GitLab webhooks post the verdict straight to the PR/MR thread, plus a commit status check."),
+      ("CI/CD", "Any pipeline: GitHub Actions and GitLab CI examples included. Exit code gates the build."),
+      ("CLI", "defender scan, defender review --git, defender audit . &mdash; JSON, SARIF, Markdown, HTML."),
+      ("API", "POST /api/analyze for IDE extensions, bots, or custom tooling. Returns structured JSON."),
+    ] %}
+    {% for name, desc in rows %}
+    <div class="glass rounded-2xl p-6">
+      <h3 class="font-bold mb-2">{{ name }}</h3>
+      <p class="text-sm text-slate-400">{{ desc|safe }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="glass rounded-2xl overflow-hidden">
+    <div class="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
+      <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+      <span class="w-3 h-3 rounded-full bg-amber-500/70"></span>
+      <span class="w-3 h-3 rounded-full bg-emerald-500/70"></span>
+      <span class="ml-3 text-xs text-slate-500 mono">.github/workflows/defender.yml</span>
+    </div>
+    <pre class="mono text-[13px] leading-relaxed p-5 overflow-x-auto text-slate-300"><code><span class="text-violet-400">on</span>: pull_request
+
+<span class="text-violet-400">steps</span>:
+  - <span class="text-violet-400">run</span>: |
+      {% raw %}git diff origin/${{ github.base_ref }}...HEAD \
+        | defender review --stdin --format sarif -o defender.sarif{% endraw %}
+  - <span class="text-violet-400">uses</span>: github/codeql-action/upload-sarif@v3</code></pre>
+  </div>
+</section>

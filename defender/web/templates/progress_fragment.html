@@ -1,0 +1,36 @@
+<div id="progress-panel" class="text-left w-full"
+     hx-get="/analyze/status/{{ job_id }}"
+     hx-trigger="load delay:650ms"
+     hx-target="this"
+     hx-swap="outerHTML">
+  <div class="flex items-center gap-3 mb-5">
+    <svg class="animate-spin text-brand-400" width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".25" stroke-width="3"></circle>
+      <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+    </svg>
+    <span class="font-semibold text-slate-200">Defender is working&hellip;</span>
+  </div>
+
+  <ol class="space-y-2.5">
+    {% for stage in stages %}
+    <li class="flex items-start gap-2.5 text-sm">
+      <span class="mono text-emerald-400 mt-0.5 shrink-0">[ok]</span>
+      <span class="text-slate-400">{{ stage }}</span>
+    </li>
+    {% endfor %}
+    {% if stages %}
+    <li class="flex items-start gap-2.5 text-sm">
+      <span class="mono text-brand-400 mt-0.5 shrink-0 animate-pulse">[..]</span>
+      <span class="text-slate-200">working&hellip;</span>
+    </li>
+    {% else %}
+    <li class="flex items-start gap-2.5 text-sm">
+      <span class="mono text-brand-400 mt-0.5 shrink-0 animate-pulse">[..]</span>
+      <span class="text-slate-200">Starting up&hellip;</span>
+    </li>
+    {% endif %}
+  </ol>
+
+  <p class="text-xs text-slate-600 mt-5">This panel polls <code class="mono">/analyze/status</code>
+    every ~650ms and refreshes with the real backend stage &mdash; nothing here is simulated.</p>
+</div>
