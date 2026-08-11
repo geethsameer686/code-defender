@@ -115,11 +115,10 @@ cp .env.example .env
 | **mock** *(default)* | `mock` | Nothing. Offline, deterministic, zero keys. |
 | **openai** | `openai` *(or just set the key — see below)* | `OPENAI_API_KEY` |
 | **adk** | `adk` | `google-adk` installed + a configured gateway/Gemini backend |
-| **gateway** | `gateway` | Walmart PROD LLM Gateway access (internal use) |
 | **gemini** | `gemini` | `GOOGLE_API_KEY` |
 | **ollama** | `ollama` | A local/on-prem Ollama server |
 
-### Bring your own OpenAI key (recommended for external / non-Walmart use)
+### Bring your own OpenAI key (recommended for external use)
 
 Just export the key — **no other configuration change needed**:
 
@@ -131,8 +130,7 @@ export OPENAIKEY=sk-...
 
 **Precedence rule:** if an OpenAI key is present *at all* (via either env var
 name above, or in `.env`), Defender automatically routes every LLM call
-through OpenAI and **switches off** the Walmart LLM Gateway / Google ADK
-path — regardless of whatever `DEFENDER_MODEL_PROVIDER` happens to be set to.
+through OpenAI.
 This means you can safely leave the rest of `.env` untouched (e.g. still
 pointed at `adk`/`gateway` for internal use) and just export the key when you
 want to run externally on your own OpenAI account instead.
